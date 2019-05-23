@@ -8,7 +8,7 @@ public class CalculatorView {
     Scanner scanner = new Scanner(System.in);
     private int choice;
 
-    public void printMenu(){
+    public void printMenu() {
         System.out.println("-----------------");
         System.out.println("------MENU-------");
         System.out.println("-----------------");
@@ -19,36 +19,38 @@ public class CalculatorView {
         System.out.println("-----------------");
     }
 
-    public void pickMenuItem(){
+    public void pickMenuItem() {
         System.out.print(">>>");
         String choiceStr = scanner.nextLine();
 
-        try{
+        try {
             choice = Integer.parseInt(choiceStr);
             validateMenuChocie(choice);
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             System.out.println("CHOOSE THE NUMBER FROM DROP 1-4");
             pickMenuItem();
         }
     }
 
-    public void validateMenuChocie(int choice){
-
+    public void validateMenuChocie(int choice) {
         this.choice = choice;
 
-        if(choice < 0 && choice > 5) {   //nwm czemu ale z samym if-em nie chce to działać
+        if (choice < 0 && choice > 5) {   //nwm czemu ale z samym if-em nie chce to działać
+            // >> bo używasz tu operatora && który oznacza "and" czyli sprawdzasz że input jest mniejszy od zera I
+            // większy od 5 co jest niemożliwe :p musisz tu zastosować "||" co oznacza "or" czyli że liczba jest albo
+            // mniejsza od 0 albo większa od 5
             System.out.println("CHOOSE THE NUMBER FROM DROP 1-4");
             pickMenuItem();
         }
     }
 
-    public static void getNumbersToCalculate(){
+    public static void getNumbersToCalculate() {
         Input.getNumbersToCheck();
         Input.checkTheGetNumbers();
     }
 
-    public void performCalculation(){
-        switch (choice){
+    public void performCalculation() {
+        switch (choice) {
             case 1:
                 System.out.println("WYNIK: " + CalculatorServer.add());
                 break;
@@ -64,7 +66,7 @@ public class CalculatorView {
             case 4:
                 if (Input.getCheckSecondUserNumber() != 0) {
                     CalculatorServer.divide();
-                }else {
+                } else {
                     System.out.println("TOU MUSTN'T DIVIDE BY ZERO!!");
                     System.out.println("--------------------------------");
                     MainClass.main(null);
