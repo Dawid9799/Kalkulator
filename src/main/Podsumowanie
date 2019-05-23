@@ -1,23 +1,10 @@
-Ogólnie jest bardzo dobrze, program wykonuje to co ma wykonywać :D!
+No teraz to ten program wygląda o niebo lepiej, gratuluje!
 
-Chciałbym żebyś poporawiał wszystko według moich komentarzy(które oczywiście powyrzucaj potem :p). Później dodam ci
-dodatkowe poprawki i sam napiszę mały kalkulator żebyś zobaczył jak ja bym to zrobił.
-
-Najważniejsze punkty przy poprawkach:
-
-Spróbuj rozbić program na 3 klasy
-- CalculatorServer do obliczeń matematycznych (czyli prawie tak jak masz teraz ale bez metody menu
-- CalculatorView do wyświetlania rzeczy na konsolę oraz do odbierania inputu od użytkownika, wyświetlania rezultatu,
-błędów
-- MainClass - tutaj w sumie nie powinno być logiki związanej z programem. Tutaj powinieneś inicjalizować CalculatorView
-i CalculatorServer i wykonywać ich metody
-
-No i moje wskazówki z komentarzy
+- pousuwałem ci z klas niepotrzebne puste linie, ogólnie nie powinieneś nigdzie robić 2 lini przerwy.
+Tak jak ci pousuwałem tak powinno być i tak możesz się trzymać :P. Niby pierdoła ale w pracy bardzo tego pilnują żeby kod
+wszędzie wyglądał tak samo. Wtedy łatwiej się na niego patrzy
 
 
-Z tego co widzę jest w tobie potencjał :D
+- musisz usunąć to extends z CalculatorView bo tutaj to zostało bardzo niefortunnie użyte. Nie ma problemu że
+jeszcze nie ogarniasz kiedy to stosować czy nie. Z tego co widze to nauka programowania idzie ci i tak znacznie szybciej niż mi szła :p
 
-
-****************************************
-
-DZIĘKI!!! :D
