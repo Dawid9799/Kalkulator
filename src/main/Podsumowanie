@@ -8,3 +8,11 @@ wszędzie wyglądał tak samo. Wtedy łatwiej się na niego patrzy
 - musisz usunąć to extends z CalculatorView bo tutaj to zostało bardzo niefortunnie użyte. Nie ma problemu że
 jeszcze nie ogarniasz kiedy to stosować czy nie. Z tego co widze to nauka programowania idzie ci i tak znacznie szybciej niż mi szła :p
 
+**********************************
+
+Nie jestem pewien cczy dobrze zrozumiałem Twoje polecenia i przypadkiem nie przekąbinowałem, zwłaszcza jśli chodzi o ten input.
+To samo tyczy się tego, że nwm czy za bardzo nie poszalałem z tą metodą static, ale to już pozostawiam twojej ocenie.
+Miałem również pewien problem z if-em, którego inaczej jak pusty if nie potrafie rozwiązać.
+Z góry dziękuję za wszystkie udzielane rady! :D
+
+

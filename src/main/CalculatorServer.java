@@ -2,45 +2,25 @@ package main;
 
 public class CalculatorServer {
 
-    private double x;
-    private double y;
+    public static double add() {
+        return Input.getCheckFirstUserNumber() + Input.getCheckSecondUserNumber();
 
-    //pusty konstruktor tworzy sie automatycznie, nie trzeba go deklarować zeby użyc new CalculatorServer().
-    // Spróbuj go usunąć i zobaczysz że program nadal będzie działać
-    CalculatorServer(){}
-
-    public double getX() {
-        return x;
     }
 
-    public void setX(double x) {
-        this.x = x;
+    public static double subtract() {
+        return Input.getCheckFirstUserNumber() - Input.getCheckSecondUserNumber();
     }
 
-    public double getY() {
-        return y;
+    public static double multiply() {
+        return Input.getCheckFirstUserNumber() * Input.getCheckSecondUserNumber();
     }
 
-    public void setY(double y) {
-        this.y = y;
-    }
-
-    public double add() {
-        return x + y;
-    }
-
-    public double subtract() {
-        return x - y;
-    }
-
-    public double multiply() {
-        return x * y;
-    }
-
-    public double divide() {
-        //zadanie z gwiazdką. Jak dzielę dwie liczby to dostaje wyniki w stylu 0.3242345345. Nie potrzebujemy tyle liczb po przecinku
-        //trzeba będzie zrobić tak żeby wynik zaokrąglał się do 2 liczb po przecinku czyli np 0.32
-        return x/y;
+    public static void divide() {
+        double approximateScore = Input.getCheckFirstUserNumber() / Input.getCheckSecondUserNumber();
+        approximateScore *= 100;
+        approximateScore = Math.round(approximateScore);
+        approximateScore /= 100;
+        System.out.print(approximateScore);
     }
 }
 

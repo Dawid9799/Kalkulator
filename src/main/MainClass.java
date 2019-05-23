@@ -4,9 +4,9 @@ public class MainClass {
 
     public static void main(String[] srg) {
         CalculatorView calculator = new CalculatorView();
-        calculator.getNumbersToCalculate();
+        CalculatorView.getNumbersToCalculate();
         calculator.printMenu();
         calculator.pickMenuItem();
-        calculator.swithOperations();
+        calculator.performCalculation();
     }
 }
