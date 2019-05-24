@@ -1,1 +1,13 @@
-skrót ctrl + shift + l formatuje kod, wtedy odstępy wszędzie powinny być takie same
+Program rozbiłem na więcej klas. Każda klasa stara się mieć konkretne zadania:
+Server - liczy
+View -  wyświetla
+Input - trzyma dane
+Validator - sprawdza poprawność inputu
+Calculator - trzyma w kupie wszystko
+Main - tutaj staramy się logiki nie trzymać ale każda aplikacja zaczyna się w metodzie public static void main dlatego wyciągnąłem wszystko co się dało i przeniosłem do klasy kalkulator
+
+Do zrobienia:
+Twoje samodzielne zadanie to dooglądać tutoriale które ci podesłałem a jeżeli będziesz się nudzić to są 2 dodatkowe rzeczy do ogarnięcia:
+Pisanie testów - poszukaj materiałów o JUnit w javie i spróbuj napisac kilka testów do kalkulatora
+- pewnie w tutorialach będą używać Maven, bez tego żaden prawdziwy projekt nie istnieje. Pewnie pojawi ci się ten temat w tych tutorialach z javy co ci podsyłałem
+- Czytaj jakąś książkę z javy, to pomaga poukładać troche fundamentalnych spraw w głowie

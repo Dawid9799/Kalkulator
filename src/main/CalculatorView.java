@@ -2,76 +2,85 @@ package main;
 
 import java.util.Scanner;
 
-
 public class CalculatorView {
+    Scanner scanner;
 
-    Scanner scanner = new Scanner(System.in);
-    private int choice;
+    public CalculatorView() {
+        scanner = new Scanner(System.in);
+    }
 
     public void printMenu() {
         System.out.println("-----------------");
         System.out.println("------MENU-------");
         System.out.println("-----------------");
-        System.out.println("1. DODAWANIE");
-        System.out.println("2. ODEJMOWANIE");
-        System.out.println("3. MNOŻENIE");
-        System.out.println("4. DZIELENIE");
+        System.out.println("1. ADD");
+        System.out.println("2. SUBSTRACT");
+        System.out.println("3. MULTIPLY");
+        System.out.println("4. DIVIDE");
         System.out.println("-----------------");
     }
 
-    public void pickMenuItem() {
-        System.out.print(">>>");
-        String choiceStr = scanner.nextLine();
+    public void getMenuOption(Input input) {
+        String menuItemChoice = scanner.nextLine();
 
-        try {
-            choice = Integer.parseInt(choiceStr);
-            validateMenuChocie(choice);
-        } catch (NumberFormatException e) {
-            System.out.println("CHOOSE THE NUMBER FROM DROP 1-4");
-            pickMenuItem();
+        //metoda sprawdza czy wybrany numer z menu jest poprawny. Zwraca ona booleana czyli jeżeli metoda zwróci true
+        //to wejdzie do ifa jeżeli false to wykona się else
+        if (Validator.isMenuOperationValid(menuItemChoice)) {
+            input.setMenuOption(Integer.parseInt(menuItemChoice));
+        }
+        else {
+            //wykonaj metode jeszcze raz dalej trzymając ten sam obiekt input
+            getMenuOption(input);
         }
     }
 
-    public void validateMenuChocie(int choice) {
-        this.choice = choice;
+    public void getNumbersToCalculate(Input input) {
+        System.out.println("Pick first number");
+        String firstNumber = scanner.nextLine();
+        System.out.println("Pick second number");
+        String secondNumber = scanner.nextLine();
 
-        if (choice < 0 && choice > 5) {   //nwm czemu ale z samym if-em nie chce to działać
-            // >> bo używasz tu operatora && który oznacza "and" czyli sprawdzasz że input jest mniejszy od zera I
-            // większy od 5 co jest niemożliwe :p musisz tu zastosować "||" co oznacza "or" czyli że liczba jest albo
-            // mniejsza od 0 albo większa od 5
-            System.out.println("CHOOSE THE NUMBER FROM DROP 1-4");
-            pickMenuItem();
+        //znowu dwie metody walidujące które zwracają booleana. Obie muszą dać return true zeby if się wykonał
+        if (Validator.isInputANumber(firstNumber) && Validator.isInputANumber(secondNumber)) {
+            input.setFirstNr(Integer.parseInt(firstNumber));
+            input.setSecondNr(Integer.parseInt(secondNumber));
+        }
+        else {
+            //wykonaj metode jeszcze raz dalej trzymając ten sam obiekt input
+            getNumbersToCalculate(input);
         }
     }
 
-    public static void getNumbersToCalculate() {
-        Input.getNumbersToCheck();
-        Input.checkTheGetNumbers();
-    }
-
-    public void performCalculation() {
-        switch (choice) {
+    //przekazuje input który zawiera wszystkie potrzebne informacje
+    public void performCalculation(Input input) {
+        switch (input.getMenuOption()) {
             case 1:
-                System.out.println("WYNIK: " + CalculatorServer.add());
+                System.out.println("WYNIK: " + CalculatorServer.add(input.getFirstNr(), input.getSecondNr()));
                 break;
 
             case 2:
-                System.out.println("WYNIK: " + CalculatorServer.subtract());
+                System.out.println(
+                        "WYNIK: " + CalculatorServer.subtract(input.getFirstNr(), input.getSecondNr()));
                 break;
 
             case 3:
-                System.out.println("WYNIK: " + CalculatorServer.multiply());
+                System.out.println(
+                        "WYNIK: " + CalculatorServer.multiply(input.getFirstNr(), input.getSecondNr()));
                 break;
 
             case 4:
-                if (Input.getCheckSecondUserNumber() != 0) {
-                    CalculatorServer.divide();
-                } else {
-                    System.out.println("TOU MUSTN'T DIVIDE BY ZERO!!");
+                if (input.getSecondNr() != 0) {
+                    System.out.println(
+                            "WYNIK: " + CalculatorServer.divide(input.getFirstNr(), input.getSecondNr()));
+                }
+                else {
+                    System.out.println("CAN'T DIVIDE BY ZERO!!");
                     System.out.println("--------------------------------");
-                    MainClass.main(null);
                 }
                 break;
+
+            default:
+                throw new RuntimeException("THIS SHOULD NEVER HAPPEN :D");
         }
     }
 }

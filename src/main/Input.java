@@ -1,45 +1,36 @@
 package main;
 
-import java.util.Scanner;
-
+//nasza mini baza danych która zbiera dane podczas działania programu i jest przekazywana pomiędzy klasy
 public class Input {
+    private int menuOption;
+    private double firstNr;
+    private double secondNr;
 
-    //musisz poczytać o metodach statycznych :p większy temat do wytłumaczenia ale tutaj źle użyty
-    // w serverze dobrze użyty :)
-    private static String firstUserNumber;
-    private static String secondUserNumber;
-    private static double checkFirstUserNumber;
-    private static double checkSecondUserNumber;
+    //nie robię tutaj konktruktora public Input() bo jak ostatnio ci mówiłem, pustego konstruktora nie trzeba pisac
+    //generuje się sam podczas działania aplikacji
 
-    public static double getCheckFirstUserNumber() {
-        return checkFirstUserNumber;
+
+    public int getMenuOption() {
+        return menuOption;
     }
 
-    public static double getCheckSecondUserNumber() {
-        return checkSecondUserNumber;
+    public void setMenuOption(int menuOption) {
+        this.menuOption = menuOption;
     }
 
-    //podzieliliśmy klasy według ich odpowiedzialności. Klasa Input miała trzymać odebrane parametry usera
-    //a widzę że zajęła przejmować wyświetlanie menu za co odpowiada CalculatorView
-    public static void getNumbersToCheck() {
-        Scanner scanner = new Scanner(System.in);
-        //to po angielsku czy po polsku jest ta apka :D
-        System.out.println("WITAJ W KALKULATORZE!");
-        System.out.print("Podaj pierwszą liczbę: ");
-        firstUserNumber = scanner.nextLine();
-        System.out.print("Podaj drugą liczbę: ");
-        secondUserNumber = scanner.nextLine();
+    public double getFirstNr() {
+        return firstNr;
     }
 
-    //może checkInputValues() bo jeszcze nie wiemy czy to numbers dlatego nazwałem to values :p
-    //ogolnie taka metoda prosi się żeby przyjmowała ten input na wejściu do metody. W powyższej metodzie też :p
-    public static void checkTheGetNumbers() {
-        try {
-            checkFirstUserNumber = Double.valueOf(firstUserNumber);
-            checkSecondUserNumber = Double.valueOf(secondUserNumber);
-        } catch (NumberFormatException e) {
-            System.out.println("INCORRECT DATA ENTERED! [TRY AGAIN]");
-            CalculatorView.getNumbersToCalculate();
-        }
+    public void setFirstNr(double firstNr) {
+        this.firstNr = firstNr;
+    }
+
+    public double getSecondNr() {
+        return secondNr;
+    }
+
+    public void setSecondNr(double secondNr) {
+        this.secondNr = secondNr;
     }
 }
