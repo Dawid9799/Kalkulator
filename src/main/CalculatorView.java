@@ -2,27 +2,25 @@ package main;
 
 import java.util.Scanner;
 
+public class CalculatorView{
 
-public class CalculatorView {
-
-    Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
     private int choice;
 
-    public void printMenu() {
+    public void printMenu(){
         System.out.println("-----------------");
         System.out.println("------MENU-------");
         System.out.println("-----------------");
-        System.out.println("1. DODAWANIE");
-        System.out.println("2. ODEJMOWANIE");
-        System.out.println("3. MNOŻENIE");
-        System.out.println("4. DZIELENIE");
+        System.out.println("  1.   ADD");
+        System.out.println("  2. SUBTRACT");
+        System.out.println("  3. MULTIPLY");
+        System.out.println("  4.  DIVIDE");
         System.out.println("-----------------");
     }
 
-    public void pickMenuItem() {
+    public void pickMenuItem(){
         System.out.print(">>>");
         String choiceStr = scanner.nextLine();
-
         try {
             choice = Integer.parseInt(choiceStr);
             validateMenuChocie(choice);
@@ -32,39 +30,42 @@ public class CalculatorView {
         }
     }
 
-    public void validateMenuChocie(int choice) {
+    public void validateMenuChocie(int choice){
         this.choice = choice;
-
-        if (choice < 0 && choice > 5) {   //nwm czemu ale z samym if-em nie chce to działać
-            // >> bo używasz tu operatora && który oznacza "and" czyli sprawdzasz że input jest mniejszy od zera I
-            // większy od 5 co jest niemożliwe :p musisz tu zastosować "||" co oznacza "or" czyli że liczba jest albo
-            // mniejsza od 0 albo większa od 5
+        if (choice < 1 || choice > 5) {
             System.out.println("CHOOSE THE NUMBER FROM DROP 1-4");
             pickMenuItem();
         }
     }
 
-    public static void getNumbersToCalculate() {
-        Input.getNumbersToCheck();
-        Input.checkTheGetNumbers();
+    public void printWelcome(){
+        System.out.println("WELCOME TO THE CALCULATOR!");
     }
 
-    public void performCalculation() {
+    public static void getFirstNumbersToCalculate(){
+        System.out.print("Enter the first number: ");
+        Input.checkFirstInputValues(scanner.nextLine());
+    }
+
+    public static void getSecondNumbersToCalculate(){
+        System.out.print("Enter the second number: ");
+        Input.checkSecondInputValues(scanner.nextLine());
+    }
+
+
+    public void performCalculation(){
         switch (choice) {
             case 1:
-                System.out.println("WYNIK: " + CalculatorServer.add());
+                System.out.println("SCORE: " + CalculatorServer.add());
                 break;
-
             case 2:
-                System.out.println("WYNIK: " + CalculatorServer.subtract());
+                System.out.println("SCORE: " + CalculatorServer.subtract());
                 break;
-
             case 3:
-                System.out.println("WYNIK: " + CalculatorServer.multiply());
+                System.out.println("SCORE: " + CalculatorServer.multiply());
                 break;
-
             case 4:
-                if (Input.getCheckSecondUserNumber() != 0) {
+                if (Input.getSecondUserNumber() != 0) {
                     CalculatorServer.divide();
                 } else {
                     System.out.println("TOU MUSTN'T DIVIDE BY ZERO!!");
